@@ -1,10 +1,10 @@
 const CACHE_NAME = 'itcell-chatboat-v1';
 const urlsToCache = [
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/icons/logo.png',
-  '/icons/chatbg.png'
+  '/bot/index.html',
+  '/bot/styles.css',
+  '/bot/script.js',
+  '/bot/icons/logo.png',
+  '/bot/icons/chatbg.png'
 ];
 
 self.addEventListener('install', event => {
