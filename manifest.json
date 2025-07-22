@@ -4,7 +4,7 @@
   "description": "chatbot for IT Cell",
   "start_url": "/bot/index.html",
   "display": "standalone",
-  "background_color": "#68c8ff",
+  "background_color": "#1F2C34",
   "theme_color": "#1F2C34",
   "orientation": "portrait",
   "icons": [
