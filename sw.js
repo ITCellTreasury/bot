@@ -1,8 +1,7 @@
 const CACHE_NAME = 'itcell-chatboat-v1';
 const urlsToCache = [
   '/bot/index.html',
-  '/bot/styles.css',
-  '/bot/script.js',
+ 
   '/bot/icons/logo.png',
   '/bot/icons/chatbg.png'
 ];
