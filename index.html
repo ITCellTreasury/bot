@@ -20,6 +20,33 @@
             --whatsapp-chat-bg: #ECE5DD;
             --whatsapp-header: #EDEDED;
             --whatsapp-border: #E0E0E0;
+            --header-bg: #06a789;
+            --header-text: white;
+            --input-bg: #EDEDED;
+            --input-border: #E0E0E0;
+            --sent-bubble: #DCF8C6;
+            --received-bubble: white;
+            --text-color: black;
+            --time-color: #667781;
+            --typing-indicator: #9E9E9E;
+			--chat-inputbg:#FFF;
+        }
+
+        /* Dark theme variables */
+        .dark-theme {
+            --whatsapp-chat-bg: #0D1418;
+            --whatsapp-header: #1F2C34;
+            --whatsapp-border: #303D45;
+            --header-bg: #1F2C34;
+            --header-text: white;
+            --input-bg: #1F2C34;
+            --input-border: #303D45;
+            --sent-bubble: #005C4B;
+            --received-bubble: #202C33;
+            --text-color: #E9EDEF;
+            --time-color: #99BEB7;
+            --typing-indicator: #8696A0;
+			--chat-inputbg:#35434a;
         }
         
         * {
@@ -27,6 +54,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         body {
@@ -39,7 +67,6 @@
         
         .chat-container {
             width: 100%;
-            
             height: 100vh;
             background-color: white;
             display: flex;
@@ -52,15 +79,28 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: #01011c;
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--header-text);
             padding: 15px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             z-index: 1000;
-           
-            margin: 0 auto;
             box-sizing: border-box;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 15px;
         }
         
         .chat-header img {
@@ -109,16 +149,17 @@
             border-radius: 7.5px;
             word-wrap: break-word;
             position: relative;
+            color: var(--text-color);
         }
         
         .received .message-bubble {
-            background-color: white;
+            background-color: var(--received-bubble);
             box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
             border-top-left-radius: 0;
         }
         
         .sent .message-bubble {
-            background-color: var(--whatsapp-light-green);
+            background-color: var(--sent-bubble);
             box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
             border-top-right-radius: 0;
         }
@@ -133,7 +174,7 @@
             top: 0;
             border: 8px solid transparent;
             border-top: 0;
-            border-right: 8px solid white;
+            border-right: 8px solid var(--received-bubble);
         }
         
         .sent .message-bubble::after {
@@ -145,12 +186,12 @@
             top: 0;
             border: 8px solid transparent;
             border-top: 0;
-            border-left: 8px solid var(--whatsapp-light-green);
+            border-left: 8px solid var(--sent-bubble);
         }
         
         .message-time {
             font-size: 11px;
-            color: #667781;
+            color: var(--time-color);
             margin-top: 2px;
             align-self: flex-end;
         }
@@ -162,11 +203,9 @@
             right: 0;
             display: flex;
             padding: 10px;
-            background-color: var(--whatsapp-header);
-            border-top: 1px solid var(--whatsapp-border);
+            background-color: var(--input-bg);
+            border-top: 1px solid var(--input-border);
             box-shadow: 1px -5px 15px 4px rgba(0, 0, 0, 0.1);
-            
-            margin: 0 auto;
             box-sizing: border-box;
         }
         
@@ -177,6 +216,8 @@
             border-radius: 20px;
             outline: none;
             font-size: 14px;
+            background-color: var(--chat-inputbg);
+            color: var(--text-color);
         }
         
         .send-button {
@@ -196,7 +237,7 @@
         .typing-indicator {
             display: flex;
             padding: 8px 12px;
-            background-color: white;
+            background-color: var(--received-bubble);
             border-radius: 7.5px;
             margin-bottom: 15px;
             align-self: flex-start;
@@ -215,13 +256,13 @@
             top: 0;
             border: 8px solid transparent;
             border-top: 0;
-            border-right: 8px solid white;
+            border-right: 8px solid var(--received-bubble);
         }
         
         .typing-indicator span {
             height: 8px;
             width: 8px;
-            background-color: #9E9E9E;
+            background-color: var(--typing-indicator);
             border-radius: 50%;
             display: inline-block;
             margin: 0 2px;
@@ -245,8 +286,11 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <img src="https://itcelltreasury.github.io/try/assets/img/logo.png" alt="ChatBot">
-            <h2>IT Cell Treasury [ChatBot]</h2>
+            <div class="header-left">
+                <img src="https://itcelltreasury.github.io/try/assets/img/logo.png" alt="ChatBot">
+                <h2>IT Cell Treasury [ChatBot]</h2>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">🌓</button>
         </div>
         <div class="chat-messages" id="chat-messages">
             <!-- Messages will appear here -->
@@ -265,6 +309,26 @@
     </div>
 
     <script>
+        // Theme management
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.textContent = '☀️';
+        } else {
+            themeToggle.textContent = '🌙';
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+
         // Configuration - Replace these with your actual values
         const CONFIG = {
             SPREADSHEET_ID: '1EhTc8vUmwZZthssjqeGcS-AnHshOFL_gliFV3zFgdps', // From your sheet URL
