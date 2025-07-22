@@ -1,6 +1,6 @@
 {
   "name": "IT Cell ChatBoat",
-  "short_name": "ChatBoat",
+  "short_name": "IT Cell Chat",
   "description": "chatbot for IT Cell",
   "start_url": "/bot/index.html",
   "display": "standalone",
