@@ -13,6 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="IT Cell ChatBoat">
 <link rel="apple-touch-icon" href="/bot/icons/icon-152x152.png">
     <style>
+      <style>
         :root {
             --whatsapp-green: #25D366;
             --whatsapp-light-green: #DCF8C6;
@@ -30,7 +31,7 @@
         }
         
         body {
-            background-color: #282828;
+            background-color: #d7d0c9;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -155,6 +156,7 @@
             padding: 10px;
             background-color: var(--whatsapp-header);
             border-top: 1px solid var(--whatsapp-border);
+			box-shadow: 1px -5px 15px 4px rgba(0, 0, 0, 0.1);
         }
         
         .chat-input input {
@@ -240,11 +242,12 @@
         </div>
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
-            <button class="send-button" id="send-button">
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <g transform="rotate(45 12 5)"> <!-- Fixed rotation center -->
+              <button class="send-button" id="send-button">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Rotated around the center (12,12) for perfect alignment -->
+    <g transform="rotate(45 12 7)">
       <line x1="22" y1="2" x2="11" y2="13"></line>
-      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      <polygon points="22 2 15 22 11 13 2 10 22 2"></polygon>
     </g>
   </svg>
 </button>
