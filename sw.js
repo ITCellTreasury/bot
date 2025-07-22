@@ -3,8 +3,8 @@ const urlsToCache = [
   '/index.html',
   '/styles.css',
   '/script.js',
-  'https://itcelltreasury.github.io/try/assets/img/logo.png',
-  'https://web.whatsapp.com/img/bg-chat-tile-light_a4be512e7195b6b733d9110b408f075d.png'
+  '/icons/logo.png',
+  '/icons/chatbg.png'
 ];
 
 self.addEventListener('install', event => {
