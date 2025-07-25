@@ -1,4 +1,4 @@
-
+<script>
     // Theme management
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
@@ -443,3 +443,4 @@
             installButton.style.display = 'none';
         }, 200000);
     }
+</script>
