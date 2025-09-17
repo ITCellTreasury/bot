@@ -1,4 +1,4 @@
-   :root {
+	   :root {
             --whatsapp-green: #25D366;
             --whatsapp-light-green: #DCF8C6;
             --whatsapp-dark-green: #128C7E;
@@ -273,4 +273,22 @@
         @keyframes bounce {
             0%, 60%, 100% { transform: translateY(0); }
             30% { transform: translateY(-5px); }
+        }
+
+        /* Styling for formatted messages */
+        .message-bubble ul, .message-bubble ol {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        
+        .message-bubble li {
+            margin-bottom: 4px;
+        }
+        
+        .message-bubble strong {
+            font-weight: 600;
+        }
+        
+        .message-bubble em {
+            font-style: italic;
         }
